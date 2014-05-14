@@ -15,8 +15,8 @@ test:
 production:
   sessions:
     default:
-      # hosts:
-      #   - oceanic.mongohq.com:10088
-      # database: app24430662
-      # username: user_service
-      # password: pathcrossingblackcat
+      hosts:
+        - oceanic.mongohq.com:10067
+      database: app25222452
+      username: organization_service
+      password: worldisrightasrain
