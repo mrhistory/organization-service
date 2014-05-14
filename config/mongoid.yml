@@ -1,0 +1,22 @@
+development:
+  sessions:
+    default:
+      database: organization_service_dev
+      hosts:
+        - localhost:27017
+
+test:
+  sessions:
+    default:
+      database: organization_service_test
+      hosts:
+        - localhost:27017
+
+production:
+  sessions:
+    default:
+      # hosts:
+      #   - oceanic.mongohq.com:10088
+      # database: app24430662
+      # username: user_service
+      # password: pathcrossingblackcat
