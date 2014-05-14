@@ -83,6 +83,66 @@ delete '/organizations/:id.json' do
   end
 end
 
+get '/applications/.json' do
+  begin
+    Application.all.to_json
+  rescue Exception => e
+    halt 500, e.message
+  end
+end
+
+post '/applications/.json' do
+  begin
+    app = Application.new(json_params)
+    if app.save
+      app.to_json
+    else
+      halt 500, app.errors.full_messages[0]
+    end
+  rescue Exception => e
+    halt 500, e.message
+  end
+end
+
+get '/applications/:id.json' do
+  begin
+    app = Application.find(params[:id])
+    if app.nil?
+      raise Exception, 'Application not found.'
+    else
+      app.to_json
+    end
+  rescue Exception => e
+    halt 500, e.message
+  end
+end
+
+put '/applications/:id.json' do
+  begin
+    app = Application.find(params[:id])
+    if app.update_attributes!(json_params)
+      app.to_json
+    else
+      halt 500, app.errors.full_messages[0]
+    end
+  rescue Exception => e
+    halt 500, e.message
+  end
+end
+
+delete '/applications/:id.json' do
+  begin
+    app = Application.find(params[:id])
+    if app.destroy
+      { id: app.id, deleted: true }.to_json
+    else
+      halt 500, app.errors.full_messages[0]
+    end
+  rescue Exception => e
+    halt 500, e.message
+  end
+end
+
 
 private
 
