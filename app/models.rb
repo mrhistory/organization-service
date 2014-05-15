@@ -12,9 +12,10 @@ class Organization
   field :zipcode
   field :phone_number
   field :admins, type: Array
-  field :applications, type: Array
 
   validates_presence_of :name
+
+  has_many :applications
 end
 
 class Application
@@ -26,4 +27,6 @@ class Application
   field :icon_image_url
 
   validates_presence_of :name
+
+  belongs_to :organization
 end
