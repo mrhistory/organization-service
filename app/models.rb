@@ -15,7 +15,7 @@ class Organization
 
   validates_presence_of :name
 
-  has_many :applications
+  has_and_belongs_to_many :applications, inverse_of: nil
 end
 
 class Application
@@ -27,6 +27,4 @@ class Application
   field :icon_image_url
 
   validates_presence_of :name
-
-  belongs_to :organization
 end

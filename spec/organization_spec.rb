@@ -84,4 +84,13 @@ describe 'Organization Service' do
     response[:deleted].should eq(true)
     Application.where(id: app.id).exists?.should eq(false)
   end
+
+  it 'should update an organization with an application' do
+    app = create(:application)
+    org = create(:organization)
+    org.applications << app
+    put "/organizations/#{org.id}.json", org.to_json
+    response = parse_json(last_response.body)
+    response[:application_ids][0].should eq(app.id.to_s)
+  end
 end

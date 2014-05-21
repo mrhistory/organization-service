@@ -6,6 +6,7 @@ FactoryGirl.define do
     state 'GA'
     zipcode '30044'
     phone_number '1234567890'
+    applications []
   end
 
   factory :application do
